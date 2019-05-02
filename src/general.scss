@@ -1,0 +1,53 @@
+$goodCardWidth: 320px;
+$smallPadAmount: 2px;
+$mediumPadAmount: 4px;
+$largePadAmount: 8px;
+
+.textInputBlock {
+    content: "";
+    display: table;
+    clear: both;
+    width: $goodCardWidth;
+}
+
+.basicText {
+    padding: 1px;
+    display: table-cell;
+    align-items: center;
+}
+
+.textInputBoxInput {
+    width: 100%;
+    text-align:center;
+}
+
+.niceCardWidth {
+    width: $goodCardWidth;
+}
+
+
+.centerHorizontalCard {
+    display: flex;
+    justify-content: center;
+    width: $goodCardWidth;
+}
+
+.mediumBuffer {
+    padding: $mediumPadAmount;
+}
+
+.largeBuffer {
+    padding: $largePadAmount;
+}
+
+.noLeftPad {
+    padding-left: 0px;
+}
+
+.smallLeftPad {
+    padding-left: $mediumPadAmount;
+}
+
+.mediumLeftPad {
+    padding-left: $mediumPadAmount;
+}
