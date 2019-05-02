@@ -1,9 +1,9 @@
 import React from 'react';
 import { environment } from '../../environment';
 import { FieldUpdate } from '../../model/fieldUpdate';
-import { TextInputComponent } from './textinput.component';
-import { UserPositiveIntegerInputComponent } from './positiveIntegerInput.component';
 import '../../general.scss';
+import { PositiveIntegerInputComponent } from '../input/positiveIntegerInput.component';
+import { TextInputComponent } from '../input/textinput.component';
 
 interface IUserUpdateProps {
     updateMessage: (newMessage: string) => void
@@ -60,7 +60,7 @@ export class UserUpdateComponent extends React.Component<IUserUpdateProps, IUser
     render() {
         return (
             <>
-                <UserPositiveIntegerInputComponent key={this.state.updateUserId.name + 'UpdateInput'}
+                <PositiveIntegerInputComponent key={this.state.updateUserId.name + 'UpdateInput'}
                     fieldUpdateModel={this.state.updateUserId} />
                 {this.state.fieldsToUpdate.map(field => (
                     <TextInputComponent key={field.name + 'UpdateInput'}

@@ -8,6 +8,7 @@ import SignInComponent from './components/sign-in/sign-in.component';
 import { Provider } from 'react-redux';
 import { store } from './Store';
 import { UsersComponent } from './components/users/users.component';
+import { ReimbursementsComponent } from './components/reimbursement/reimbursement.component';
 
 const App: React.FC = () => {
   return (
@@ -17,7 +18,7 @@ const App: React.FC = () => {
         <div id="main-content-container">
           <Switch>
             <Route path="/home" component={HomeComponent} />
-            {/* <Route path="/reimbursements" component={PokemonComponent} /> */}
+            <Route path="/reimbursements" component={ReimbursementsComponent} />
             <Route path="/sign-in" component={SignInComponent} />
             <Route path="/users" component={UsersComponent} />
             <Route component={HomeComponent} />

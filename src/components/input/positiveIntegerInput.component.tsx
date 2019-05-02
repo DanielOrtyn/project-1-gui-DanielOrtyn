@@ -6,7 +6,7 @@ interface IInputProps {
     fieldUpdateModel: FieldUpdate<number>;
 }
 
-export class UserPositiveIntegerInputComponent extends React.PureComponent<IInputProps> {
+export class PositiveIntegerInputComponent extends React.PureComponent<IInputProps> {
     idInputBox: string = `${this.props.fieldUpdateModel.name}InputBox`;
 
     updateValue = (event) => {
