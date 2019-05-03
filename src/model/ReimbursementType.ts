@@ -7,4 +7,12 @@ export class ReimbursementType {
         this.typeId = newTypeId;
         this.type = newType;
     }
+
+    public static sqlConverter(jsonObj: ReimbursementType) {
+        return new ReimbursementType(jsonObj.typeId, jsonObj.type);
+    }
+
+    toString(): string {
+        return this.type;
+    }
 }

@@ -1,3 +1,5 @@
+import { ReimbursementStatus } from "./ReimbursementStatus";
+import { ReimbursementType } from "./ReimbursementType";
 
 export class Reimbursement {
     reimbursementId: number;
@@ -7,14 +9,14 @@ export class Reimbursement {
     dateResolved: number;
     description: string;
     resolver: number;
-    status: number;
-    type: number;
+    status?: ReimbursementStatus;
+    type?: ReimbursementType;
 
     constructor(newReimbursementId: number, newAuthor: number,
         newAmount: number, newDateSubmitted: number,
         newDateResolved: number, newDescription: string,
-        newResolver: number, newStatus: number,
-        newType: number) {
+        newResolver: number, newStatus: ReimbursementStatus,
+        newType: ReimbursementType) {
 
         this.reimbursementId = newReimbursementId;
         this.author = newAuthor;
@@ -25,5 +27,22 @@ export class Reimbursement {
         this.resolver = newResolver;
         this.status = newStatus;
         this.type = newType;
+    }
+
+    public static sqlConverter(jsonObj: Reimbursement, newStatus: ReimbursementStatus,
+        newType: ReimbursementType) {
+        console.log(jsonObj);
+        console.log(newStatus);
+        console.log(newType);
+        return new Reimbursement(jsonObj.reimbursementId, jsonObj.author,
+            jsonObj.amount, jsonObj.dateSubmitted, jsonObj.dateResolved,
+            jsonObj.description, jsonObj.resolver, newStatus, newType);
+    }
+
+    isFurtherChangeAllowed() {
+        if (this.status) {
+            return this.status.statusId !== 4 && this.status.statusId !== 5;
+        }
+        return false;
     }
 }

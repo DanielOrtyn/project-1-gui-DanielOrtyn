@@ -68,7 +68,7 @@ export class UserUpdateComponent extends React.Component<IUserUpdateProps, IUser
                 ))}
                 <div className="centerHorizontalCard mediumBuffer">
                     <button onClick={this.updateUser}
-                        className="btn btn-success">Update User</button>
+                        className="btn btn-primary">Update User</button>
                 </div>
             </>
         );

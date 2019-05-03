@@ -108,7 +108,7 @@ export class UsersComponent extends React.Component<IUsersProps, IUsersState> {
                     </div>
                     <div className="centerHorizontalCard mediumBuffer">
                         <button onClick={this.getUserById}
-                            className="btn btn-success">Select User</button>
+                            className="btn btn-primary">Select User</button>
                     </div>
                 </div>
                 <div className="container">

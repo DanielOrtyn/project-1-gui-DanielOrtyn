@@ -3,7 +3,9 @@ import { environment } from "../environment";
 export const authTypes = {
     INVALID_CREDENTIALS: 'INVALID_CREDENTIALS',
     FAILED_TO_LOGIN: 'FAILED_TO_LOGIN',
-    LOGGED_IN: 'LOGGED_IN'
+    LOGGED_IN: 'LOGGED_IN',
+    LOGGED_REFRESH_FROM_SESSION: 'LOGGED_REFRESH_FROM_SESSION',
+    LOGGED_OUT: 'LOGGED_OUT'
 }
 
 export const login = (username: string, password: string, history: any) => async (dispatch) => {
@@ -15,12 +17,12 @@ export const login = (username: string, password: string, history: any) => async
             headers: {
                 'content-type': 'application/json'
             }
-        })
+        });
 
         if (resp.status === 401) {
             dispatch({
                 type: authTypes.INVALID_CREDENTIALS
-            })
+            });
         } else if (resp.status === 200) {
             const user = await resp.json();
             dispatch({
@@ -28,13 +30,13 @@ export const login = (username: string, password: string, history: any) => async
                     user
                 },
                 type: authTypes.LOGGED_IN
-            })
+            });
             // redirect to home page
             history.push('/home');
         } else {
             dispatch({
                 type: authTypes.FAILED_TO_LOGIN
-            })
+            });
             history.push('/home');
         }
     } catch (err) {

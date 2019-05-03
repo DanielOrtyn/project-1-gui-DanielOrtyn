@@ -1,16 +1,16 @@
 import { combineReducers } from "redux";
-import { User } from "../model/user";
 import { authReducer } from "./auth.reducer";
+import { User } from "../model/user";
 
 export interface IAuthState {
-  currentUser?: User,
-  errorMessage?: string
-} 
+    currentUser?: User,
+    errorMessage?: string
+}
 
 export interface IState {
-  auth: IAuthState
+    auth: IAuthState
 }
 
 export const state = combineReducers<IState>({
-  auth: authReducer
+    auth: authReducer
 })
