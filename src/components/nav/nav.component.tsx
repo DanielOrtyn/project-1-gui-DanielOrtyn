@@ -8,7 +8,7 @@ import { User } from '../../model/user';
 interface INaveProps {
     currentUser?: User
 }
-
+// Test change
 export class NavComponent extends React.PureComponent<INaveProps> {
     render() {
         const currentUser = this.props.currentUser;
