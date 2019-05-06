@@ -32,13 +32,13 @@ export class NavComponent extends React.PureComponent<INaveProps> {
                             <Link to="/sign-in" className="unset-anchor nav-link">Sign In</Link>
                         </li>
                         <li className="nav-item active">
+                            <Link to="/users" className="unset-anchor nav-link">Users</Link>
+                        </li>
+                        <li className="nav-item active">
                             <Link to="/reimbursements" className="unset-anchor nav-link">Reimbursements</Link>
                         </li>
                         <li className="nav-item active">
                             <Link to="/reimbursementSubmit" className="unset-anchor nav-link">Submit Reimbursement</Link>
-                        </li>
-                        <li className="nav-item active">
-                            <Link to="/users" className="unset-anchor nav-link">Users</Link>
                         </li>
                     </ul>
                 </div>
