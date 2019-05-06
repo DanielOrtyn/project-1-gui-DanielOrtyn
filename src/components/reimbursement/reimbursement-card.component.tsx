@@ -59,7 +59,7 @@ export class ReimbursementCardComponent extends React.PureComponent<IReimburseme
         if (this.props.currentUser) {
             let patchBody = {
                 reimbursementid: this.props.reimbursement.reimbursementId,
-                dateresolved: (new Date()).getTime(),
+                dateresolved: new Date(),
                 resolver: this.props.currentUser.userId,
                 status: 5
             }
@@ -103,23 +103,28 @@ export class ReimbursementCardComponent extends React.PureComponent<IReimburseme
     }
 
     buttonRender() {
-        return (
-            <>
-                <button className="btn btn-success" onClick={this.approveReimbursement}>Approve</button>
-                <button className="btn btn-danger" onClick={this.denyReimbursement}>Deny</button>
-            </>
-        )
+        const reimbursement: Reimbursement = this.props.reimbursement;
+        if (reimbursement) {
+            if (reimbursement.isFurtherChangeAllowed()) {
+                return (
+                    <>
+                        <button className="btn btn-success" onClick={this.approveReimbursement}>Approve</button>
+                        <button className="btn btn-danger" onClick={this.denyReimbursement}>Deny</button>
+                    </>
+                )
+            }
+        }
+        return (<></>);
     }
 
     render() {
-        const reimbursement: Reimbursement = this.props.reimbursement;
         return (
             <div className="card niceCardWidth">
                 <ul className="list-group list-group-flush">
                     {this.itemRender()}
                 </ul>
                 <div className="centerHorizontalCard">
-                    {reimbursement.isFurtherChangeAllowed() && this.buttonRender()}
+                    {this.buttonRender()}
                 </div>
             </div>
         )

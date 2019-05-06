@@ -95,7 +95,7 @@ export class ReimbursementsComponent extends React.Component<any, IReimbursement
     updateSearchType = (newSearch: string) => {
         this.setState({
             searchType: SEARCH_TYPES.indexOf(newSearch, 0),
-            searchNumber: 0
+            searchNumber: 1
         });
     }
 
@@ -115,6 +115,7 @@ export class ReimbursementsComponent extends React.Component<any, IReimbursement
 
     searchClickHandler = async () => {
         const searchId: number = this.state.searchNumber;
+        console.log(searchId);
         if (this.state.searchType === 0) {
             this.getReimbursementsByStatus(searchId);
         }
@@ -154,6 +155,7 @@ export class ReimbursementsComponent extends React.Component<any, IReimbursement
     }
 
     async getReimbursementsByAuthor(authorId: number) {
+        console.log(authorId);
         const resp = await fetch(environment.context + '/reimbursements/author/userId/' + authorId, {
             method: 'GET',
             credentials: 'include'
@@ -161,9 +163,16 @@ export class ReimbursementsComponent extends React.Component<any, IReimbursement
 
         if (resp.status >= 200 && resp.status < 300) {
             const body = await resp.json();
-            console.log(body);
+            const reimbursementList: Reimbursement[] = [];
+            for (let reimbursementJson of body) {
+                const status = ReimbursementStatus.sqlConverter(reimbursementJson.status);
+                const type = ReimbursementType.sqlConverter(reimbursementJson.type);
+                const reimbursementObj = Reimbursement.sqlConverter(reimbursementJson, status, type);
+                reimbursementList.push(reimbursementObj);
+            }
+            console.log(reimbursementList);
             this.setState({
-                reimbursements: body
+                reimbursements: reimbursementList
             });
             this.updateMessage('');
         } else {

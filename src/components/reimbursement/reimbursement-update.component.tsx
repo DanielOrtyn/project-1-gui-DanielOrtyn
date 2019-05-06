@@ -67,7 +67,7 @@ export class ReimbursementUpdateComponent extends React.Component<IReimbursement
         };
         this.state.amount.value && (patchBody[this.state.amount.name.toLowerCase()] = this.state.amount.value);
         this.state.description.value && (patchBody[this.state.description.name.toLowerCase()] = this.state.description.value);
-        this.state.selectedType > 1 && (patchBody['type'] = this.state.selectedType);
+        this.state.selectedType && this.state.selectedType > 1 && (patchBody['type'] = this.state.selectedType);
         this.state.amount && (patchBody[this.state.amount.name.toLowerCase()] = this.state.amount.value);
         console.log(patchBody);
         const resp = await fetch(environment.context + '/reimbursements', {

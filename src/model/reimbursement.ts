@@ -41,8 +41,13 @@ export class Reimbursement {
 
     isFurtherChangeAllowed() {
         if (this.status) {
-            return this.status.statusId !== 4 && this.status.statusId !== 5;
+            if(this.status.statusId === 4){
+                return false;
+            }
+            if(this.status.statusId === 5){
+                return false;
+            }
         }
-        return false;
+        return true;
     }
 }
