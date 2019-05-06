@@ -7,4 +7,8 @@ export class Role {
         this.roleId = roleId;
         this.role = role;
     }
+
+    toString() {
+        return this.role;
+    }
 }

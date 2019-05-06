@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RevLogo from '../../assets/rev-logo.png';
+import Project_Logo from '../../assets/Project_0-1_Logo.png';
 import { IState } from '../../reducers';
 import { connect } from 'react-redux';
 import { User } from '../../model/user';
@@ -16,7 +16,7 @@ export class NavComponent extends React.PureComponent<INaveProps> {
             <nav className="navbar navbar-toggleable-md navbar-expand-lg navbar-dark display-front nav-pad">
                 <div className="navbar-header c-pointer shift-left">
                     <Link to="/home" className="unset-anchor">
-                        <img className="img-adjust-position rev-logo" src={RevLogo} alt="revature" />
+                        <img className="img-adjust-position rev-logo" src={Project_Logo} alt="revature" />
                     </Link>
                 </div>
                 <div>{currentUser ? `${currentUser.firstName} ${currentUser.lastName}` : "No User"}</div>
